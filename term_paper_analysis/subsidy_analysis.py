@@ -42,8 +42,8 @@ sample.dropna(inplace = True)
 ##############################################################################
 # create vars
 ##############################################################################
-sample['month'] = sample.date.map(lambda x: str(x.month))
-sample['year'] = sample.date.map(lambda x: str(x.year))
+sample['month'] = sample.myr.map(lambda x: str(x.month))
+sample['year'] = sample.myr.map(lambda x: str(x.year))
 
 months = pd.get_dummies(sample.month, drop_first = True)
 years = pd.get_dummies(sample.year, drop_first = True)
@@ -98,8 +98,8 @@ sum_table = summary_col(
 
 print(sum_table)
 
-# with open("log_size_dc_res.tex", 'w') as f:
-#         f.write(sum_table.as_latex()[49:-50])
+with open("log_gen_q_res.tex", 'w') as f:
+        f.write(sum_table.as_latex()[49:-50])
 
 ##############################################################################
 # Create histogram displaying time trend of # of observations
@@ -139,7 +139,7 @@ for iou in sub_df.iou.unique():
     ax.set_xlabel('Month')
     ax.set_ylim(0, 3300)
     
-    fig.savefig(f"../term paper/app_hist_{iou}.png")
+    #fig.savefig(f"../term paper/app_hist_{iou}.png")
 
 
 
